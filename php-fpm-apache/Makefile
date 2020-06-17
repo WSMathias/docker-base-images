@@ -2,8 +2,8 @@
 
 REGISTRY=srijanlabs/php-fpm-apache
 define build_image
-	docker build  --build-arg PHP_TAG=${1} -t $(REGISTRY):${1} .
-	docker build  --build-arg PHP_TAG=${1}-dev -t $(REGISTRY):${1}-dev .
+	docker build --no-cache --build-arg PHP_TAG=${1} -t $(REGISTRY):${1} .
+	docker build --no-cache --build-arg PHP_TAG=${1}-dev -t $(REGISTRY):${1}-dev .
 endef
 
 define push_image

@@ -18,18 +18,18 @@ COPY start.sh /usr/local/bin/start.sh
 COPY app.conf /etc/apache2/sites-enabled/000-default.conf
 COPY envvars ports.conf /etc/apache2/
 
-ENV DOC_ROOT "/app/web"
-
 EXPOSE 8080
 
 ENV PATH="/app/web/vendor/bin:${PATH}" \
     USER_GROUP="continua:continua" \
+    DOC_ROOT="/app/web" \
     PHP_HOST=localhost
 
 RUN mkdir /var/run/{apache2,fpm} \
     && chmod -R 0777 /var/tmp \
-    && chown -R ${USER_GROUP} /var/{log,run/{fpm,apache2},lib/apache2} \
-    && chown -R ${USER_GROUP} /etc/apache2
+    && chown -R ${USER_GROUP} \
+        /var/{log,run/{fpm,apache2},lib/apache2} \
+        /etc/apache2
 
 USER continua
 
