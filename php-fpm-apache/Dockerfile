@@ -4,8 +4,8 @@ FROM srijanlabs/php-fpm:${PHP_TAG}
 USER root
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    apache2 \
-    libapache2-mod-fcgid \
+        apache2=2.4.38-3+deb10u3 \
+        libapache2-mod-fcgid=1:2.3.9-4 \
     && a2enmod actions \
     && a2enmod proxy \
     && a2enmod rewrite \
@@ -24,11 +24,14 @@ ENV PATH="/app/web/vendor/bin:${PATH}" \
     USER_GROUP="continua:continua" \
     DOC_ROOT="/app/web" \
     PHP_HOST=localhost
-
-RUN mkdir /var/run/{apache2,fpm} \
+# 
+RUN mkdir /var/run/apache2 /var/run/fpm \
     && chmod -R 0777 /var/tmp \
     && chown -R ${USER_GROUP} \
-        /var/{log,run/{fpm,apache2},lib/apache2} \
+        /var/log \
+        /var/run/fpm \
+        /var/run/apache2 \
+        /var/lib/apache2 \
         /etc/apache2
 
 USER continua
