@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-      with:
-        ref: testing 
     # debian
     - name: Build debian image
       run: docker build -f base/debian/Dockerfile -t srijanlabs/debian:latest base/debian
