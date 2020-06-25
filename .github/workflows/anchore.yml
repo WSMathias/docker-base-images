@@ -92,7 +92,7 @@ jobs:
 #         echo "${{ steps.scan_php_dev.outputs.policycheck }}" 
     - name: Raise issue
       id: raise_issue_php_dev
-      if: contains(steps.scan_php_dev.outputs.policycheck, 'pass')
+#       if: contains(steps.scan_php_dev.outputs.policycheck, 'pass')
       uses: JasonEtco/create-an-issue@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
