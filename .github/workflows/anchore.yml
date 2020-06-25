@@ -23,6 +23,11 @@ jobs:
         dockerfile-path: "base/debian/Dockerfile"
         fail-build: false
         acs-report-enable: true
+    - name: print anchore output
+      id: scan_debian_output
+      run: |
+        echo "${{ steps.scan_debian.outputs.vulnerabilities }}"
+        echo "${{ steps.scan_debian.outputs.policycheck }}"
 
 #     # apache
 #     - name: Build apache image
