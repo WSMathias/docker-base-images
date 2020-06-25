@@ -55,37 +55,42 @@ jobs:
 #         fail-build: false
 #         acs-report-enable: true
 
-    # php-cli
-    - name: Build php-cli image
-      id: build_php_cli
-      run: docker build -f php/debian/cli/Dockerfile -t srijanlabs/php-cli:latest php/debian/cli
-    - name: Scan php-cli image
-      id: scan_php_cli
+#     # php-cli
+#     - name: Build php-cli image
+#       id: build_php_cli
+#       run: docker build -f php/debian/cli/Dockerfile -t srijanlabs/php-cli:latest php/debian/cli
+#     - name: Scan php-cli image
+#       id: scan_php_cli
+#       uses: anchore/scan-action@master
+#       with:
+#         image-reference: "srijanlabs/php-cli:latest"
+#         dockerfile-path: "php/debian/cli/Dockerfile"
+#         fail-build: false
+#         acs-report-enable: true
+#     - name: print anchore output
+#       id: scan_php_cli_output
+#       run: |
+#         echo "${{ steps.scan_php_cli.outputs.vulnerabilities }}"
+#         echo "${{ steps.scan_php_cli.outputs.policycheck }}"
+
+    # php-dev
+    - name: Build php-dev image
+      id: build_php_dev
+      run: docker build -f php/debian/dev/Dockerfile -t srijanlabs/php-dev:latest php/debian/dev
+    - name: Scan php-dev image
+      id: scan_php_dev
       uses: anchore/scan-action@master
       with:
-        image-reference: "srijanlabs/php-cli:latest"
-        dockerfile-path: "php/debian/cli/Dockerfile"
+        image-reference: "srijanlabs/php-dev:latest"
+        dockerfile-path: "php/debian/dev/Dockerfile"
         fail-build: false
         acs-report-enable: true
     - name: print anchore output
-      id: scan_php_cli_output
+      id: scan_php_dev_output
       run: |
-        echo "${{ steps.scan_php_cli.outputs.vulnerabilities }}"
-        echo "${{ steps.scan_php_cli.outputs.policycheck }}"
-
-#     # php-dev
-#     - name: Build php-dev image
-#       id: build_php_dev
-#       run: docker build -f php/debian/dev/Dockerfile -t srijanlabs/php-dev:latest php/debian/dev
-#     - name: Scan php-dev image
-#       id: scan_php_dev
-#       uses: anchore/scan-action@master
-#       with:
-#         image-reference: "srijanlabs/php-dev:latest"
-#         dockerfile-path: "php/debian/dev/Dockerfile"
-#         fail-build: false
-#         acs-report-enable: true
-
+        echo "${{ steps.scan_php_dev.outputs.vulnerabilities }}"
+        echo "${{ steps.scan_php_dev.outputs.policycheck }}" 
+        
 #     # php-fpm
 #     - name: Build php-fpm image
 #       id: build_php_fpm
