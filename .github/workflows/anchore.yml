@@ -87,6 +87,8 @@ jobs:
         # acs-report-enable: true
     - name: Rename file
       run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/vulnerabilities-php-dev.json
+    - name: list files
+      run: ls ./anchore-reports/vulnerabilities-*.json
     - name: anchore inline scan JSON results
       run: for j in `ls ./anchore-reports/vulnerabilities-*.json`; do echo "---- ${j} ----"; cat ${j}; echo; done
     # - name: anchore action SARIF report
