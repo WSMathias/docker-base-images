@@ -1,5 +1,6 @@
 ---
-title: vulnerabilities are found
-labels: bug
+title: High risk vulnerabilities are found
+labels: anchore-scan,security
 ---
-Someone just pushed, oh no! Here's who did it: {{ env.IMAGE }}.
+### Update Your Dockerfiles to fix there vulnerabilities accordingly.
+## incase no fix found explore the option to downgrade package version
