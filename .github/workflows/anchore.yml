@@ -22,13 +22,15 @@ jobs:
     #     fail-build: false
         # acs-report-enable: true
     - name: Rename file
-      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-dev.json
+      run: |
+        cp ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-cli.json
+        mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-dev.json
     - name: Raise issue
       id: raise_issue_php_dev
 #       if: contains(steps.scan_php_dev.outputs.policycheck, 'pass')
-      uses: WSMathias/create-an-issue@v2.3.8
+      uses: WSMathias/create-an-issue@read-from-json
       with:
-        report-files-pattern: ./anchore-reports/scan_*
+        reportFilespattern: ./anchore-reports/scan_*
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         IMAGE: srijanlabs/php-dev:latest
