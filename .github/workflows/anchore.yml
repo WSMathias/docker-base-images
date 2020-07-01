@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    # - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
     # - name: Build php-dev image
     #   id: build_php_dev
     #   run: docker build -f php/debian/dev/Dockerfile -t srijanlabs/php-dev:latest php/debian/dev
