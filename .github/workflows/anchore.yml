@@ -21,12 +21,12 @@ jobs:
     #     dockerfile-path: "php/debian/dev/Dockerfile"
     #     fail-build: false
         # acs-report-enable: true
-    # - name: Rename file
-    #   run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/vulnerabilities-php-dev.json
+    - name: Rename file
+      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_php-dev.json
     - name: Raise issue
       id: raise_issue_php_dev
 #       if: contains(steps.scan_php_dev.outputs.policycheck, 'pass')
-      uses: WSMathias/create-an-issue@v2.1.9
+      uses: WSMathias/create-an-issue@v2.1.10
       # with:
       #   reports-path-pattern: ./anchore-reports/vulnerabilities-*
       env:
