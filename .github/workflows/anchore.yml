@@ -105,7 +105,7 @@ jobs:
     - name: Raise issue
       id: raise_issue_php_dev
 #       if: contains(steps.scan_php_dev.outputs.policycheck, 'pass')
-      uses: WSMathias/create-an-issue@v2.1.1
+      uses: WSMathias/create-an-issue@v2.1.2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         IMAGE: srijanlabs/php-dev:latest
