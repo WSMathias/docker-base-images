@@ -26,7 +26,7 @@ jobs:
     - name: Raise issue
       id: raise_issue_php_dev
 #       if: contains(steps.scan_php_dev.outputs.policycheck, 'pass')
-      uses: WSMathias/create-an-issue@v2.1.12
+      uses: WSMathias/create-an-issue@v2.1.13
       # with:
       #   reports-path-pattern: ./anchore-reports/vulnerabilities-*
       env:
