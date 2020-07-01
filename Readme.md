@@ -1,3 +1,4 @@
+![Docker Security Scan](https://github.com/WSMathias/docker-base-images/workflows/Docker%20Security%20Scan/badge.svg)
 # Docker Base Images
 
 Base images for frequently used runtimes in Srijan.
