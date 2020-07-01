@@ -9,17 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Build php-dev image
-      id: build_php_dev
-      run: docker build -f php/debian/dev/Dockerfile -t srijanlabs/php-dev:latest php/debian/dev
-    - name: Scan php-dev image
-      id: scan_php_dev
-      uses: anchore/scan-action@master
-      with:
-        image-reference: "srijanlabs/php-dev:latest"
-        dockerfile-path: "php/debian/dev/Dockerfile"
-        fail-build: false
+    # - uses: actions/checkout@v2
+    # - name: Build php-dev image
+    #   id: build_php_dev
+    #   run: docker build -f php/debian/dev/Dockerfile -t srijanlabs/php-dev:latest php/debian/dev
+    # - name: Scan php-dev image
+    #   id: scan_php_dev
+    #   uses: anchore/scan-action@master
+    #   with:
+    #     image-reference: "srijanlabs/php-dev:latest"
+    #     dockerfile-path: "php/debian/dev/Dockerfile"
+    #     fail-build: false
         # acs-report-enable: true
     # - name: Rename file
     #   run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/vulnerabilities-php-dev.json
