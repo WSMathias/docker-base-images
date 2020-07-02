@@ -1,10 +1,9 @@
-name: CI
+name: Build
 
 on:
   push:
     branches: 
-      - none
-  pull_request:
+      - dev
 
 jobs:
   lint:
