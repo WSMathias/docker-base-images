@@ -121,7 +121,6 @@ jobs:
 #       if: contains(steps.scan_php_dev.outputs.policycheck, 'pass')
       uses: WSMathias/create-an-issue@read-from-json
       with:
-        reportFilespattern: ./anchore-reports/scan_*
+        reportFilesPattern: ./anchore-reports/scan_*
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        IMAGE: srijanlabs/php-dev:latest
