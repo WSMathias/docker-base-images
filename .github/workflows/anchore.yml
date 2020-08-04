@@ -1,9 +1,9 @@
 name: Docker Security Scan
 
 on:
-  # Run every midnight.
-  schedule:
-    - cron: '0 0 * * *'
+  push:
+    branches: 
+      - testing
 
 jobs:
   build:
